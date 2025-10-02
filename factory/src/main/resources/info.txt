@@ -1,0 +1,34 @@
+Factory Method Pattern
+
+What is it?
+
+The Factory Method is a Creational Design Pattern.
+Instead of creating objects directly using new, you let a factory class (or method) decide which subclass/object to return.
+
+In simple terms: "Don’t call new, let the factory do it for you."
+
+
+When to Use It?
+
+Use Factory Method when:
+You have a superclass/interface, but don’t know which exact implementation you need until runtime.
+Object creation logic is complex, repetitive, or dynamic.
+You want to decouple client code from the specific classes it instantiates.
+
+Why to Use It?
+
+Encapsulation: Hides object creation details.
+Flexibility: Easy to add new types (just extend factory).
+Decoupling: Client code doesn’t depend on new SomeClass().
+
+How to Use It?
+
+Steps:
+Define a Product interface [ElectronicGadgets].
+Create Concrete Products [Laptop/Desktop/SmartWatch/FitnessWatch].
+Create a Factory Class/Method to instantiate products [SupportedGadgets] -> SealedClass.
+Client code asks Factory[SupportedGadgets] -> gets the right product.
+
+Take Away:
+Use Factory Method when you want to delegate the responsibility of object creation to a central common place,
+making system more extensible and less dependent on concrete classes/actual implementation.
