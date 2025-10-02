@@ -7,7 +7,6 @@ Instead of creating objects directly using new, you let a factory class (or meth
 
 In simple terms: "Don’t call new, let the factory do it for you."
 
-
 When to Use It?
 
 Use Factory Method when:
