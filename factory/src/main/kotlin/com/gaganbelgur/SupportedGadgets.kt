@@ -13,13 +13,20 @@ sealed class GadgetType {
     object LaptopType: GadgetType() {
         override fun create(): ElectronicGadgets = Laptop()
     }
+
     object DesktopType: GadgetType() {
         override fun create(): ElectronicGadgets = Desktop()
     }
+
     object FitnessWatchType: GadgetType() {
         override fun create(): ElectronicGadgets = FitnessWatch()
     }
+
     object SmartWatchType: GadgetType() {
         override fun create(): ElectronicGadgets = SmartWatch()
+    }
+
+    companion object {
+        val SUPPORTED_GADGETS = listOf<GadgetType>(LaptopType, DesktopType, FitnessWatchType, SmartWatchType)
     }
 }
