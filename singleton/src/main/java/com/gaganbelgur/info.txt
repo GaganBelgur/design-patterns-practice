@@ -1,0 +1,25 @@
+1. Eager Initialization
+Instance is created at class loading time.
+Simple, but wastes memory if the instance is never used.
+
+2. Lazy Initialization
+Instance created only when needed.
+Not thread-safe (unless synchronized).
+
+3. Thread-Safe Singleton (Synchronized)
+Adds synchronized to make it thread-safe.
+Slower because every call locks the method.
+
+4. Double-Checked Locking (Best of Lazy + Performance)
+Uses volatile + synchronized block.
+Only locks when instance is null → efficient.
+
+`volatile` is a keyword you can apply to a variable.
+It tells the JVM and compiler:
+Always read/write directly from main memory, not from CPU cache.
+Guarantees visibility → if one thread updates the variable, other threads will immediately see the updated value.
+Without volatile, different threads may keep their own cached copy of a variable → leading to inconsistent results.
+
+5. Bill Pugh Singleton (Static Inner Class) [Recommended].
+Uses static inner helper class.
+Lazy-loaded, thread-safe, and no synchronization overhead.
