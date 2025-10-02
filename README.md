@@ -1,6 +1,6 @@
-# Design Patterns in Java 🚀
+# Design Patterns 🚀
 
-This repository contains my implementations of common **Design Patterns** in Java.  
+This repository contains my implementations of common **Design Patterns** in Java and Kotlin.  
 It serves as both a **learning reference** and a **ready-to-use guide** for interviews and projects.
 
 ---
@@ -46,16 +46,15 @@ It serves as both a **learning reference** and a **ready-to-use guide** for inte
 ---
 
 ## 🛠️ Tech Stack
-- Language: **Java 17+**
-- Build Tool: **Maven/Gradle**
-- Testing: **JUnit 5**
+- Language: **Java 18 Kotlin 1.9.0**
+- Build Tool: **Gradle/Gradle KTS**
 
 ---
 
 ## 📖 How to Run
 ```bash
 # Clone the repo
-git clone https://github.com/<your-username>/design-patterns-in-java.git
+git clone https://github.com/<your-username>/design-patterns.git
 
 # Open in IntelliJ/VSCode/Eclipse
 # Run individual pattern examples
