@@ -12,6 +12,7 @@ repositories {
 dependencies {
     implementation(project(":singleton"))
     implementation(project(":factory"))
+    implementation(project(":abstractfactory"))
     testImplementation(kotlin("test"))
 }
 
