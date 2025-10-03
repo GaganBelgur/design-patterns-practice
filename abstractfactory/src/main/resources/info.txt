@@ -1,0 +1,41 @@
+Abstract Factory Pattern
+
+What is it?
+
+The Abstract Factory Pattern provides an interface for creating families of related or dependent objects
+without specifying their concrete classes.
+It is basically a super-factory that produces other factories.
+It ensures that products that belong together (e.g., MacBook + Apple Watch) are created in one shot.
+
+In short: One factory creates multiple related objects as a family.
+
+When to Use It?
+
+You need to create families of related objects Gadgets for Apple vs Samsung.
+You want to enforce consistency across products (Apple factory should not return a Samsung watch).
+You want to hide concrete classes from clients (clients only know interfaces, not new AppleLaptop()).
+When system needs to be extensible for new product families (easy to
+add GoogleFactory or WindowsFactory without impacting client code).
+
+Why to Use It?
+
+Decoupling – Client code depends only on abstract interfaces, not concrete classes.
+Consistency – Ensures that products from the same family are always create and used together.
+Scalability – Adding new products doesn’t break existing code.
+Better testability – You can easily mock or swap entire families of objects in tests.
+
+How to Use It?
+Step 1: Define product interfaces
+(e.g., Laptop, SmartWatch).
+
+Step 2: Define Abstract Factory
+(e.g., GadgetsFactory → creates Laptop + SmartWatch).
+
+Step 3: Create Concrete Products
+(e.g., AppleLaptop, AppleSmartWatch).
+
+Step 4: Create Concrete Factories
+(e.g., AppleGadgetsFactory, SamsungGadgetsFactory).
+
+Step 5: Client uses the factory
+Client only calls GadgetsFactory, doesn’t care if it’s Apple or Samsung.
