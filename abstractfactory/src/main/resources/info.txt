@@ -39,3 +39,8 @@ Step 4: Create Concrete Factories
 
 Step 5: Client uses the factory
 Client only calls GadgetsFactory, doesn’t care if it’s Apple or Samsung.
+
+Take Away
+Abstract Factory is a creational design pattern that lets you produce families of related objects
+without exposing their concrete classes. You use it when you want product consistency and decoupling,
+especially when your system needs multiple interchangeable families of products.
