@@ -1,4 +1,4 @@
-package org.example.com.gaganbelgur
+package com.gaganbelgur
 
 interface SmartWatch {
 
