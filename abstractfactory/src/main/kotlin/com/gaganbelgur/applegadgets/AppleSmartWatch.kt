@@ -2,7 +2,7 @@ package com.gaganbelgur.applegadgets
 
 import com.gaganbelgur.SmartWatch
 
-class AppleSmartWatch: SmartWatch {
+internal class AppleSmartWatch: SmartWatch {
 
     override fun showTime() = println("Apple Smart Watch Show Time")
 

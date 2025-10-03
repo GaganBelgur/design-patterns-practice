@@ -2,7 +2,7 @@ package com.gaganbelgur.applegadgets
 
 import com.gaganbelgur.Laptop
 
-class AppleLaptop : Laptop {
+internal class AppleLaptop : Laptop {
 
     override fun start() = println("Apple Laptop Started")
 
