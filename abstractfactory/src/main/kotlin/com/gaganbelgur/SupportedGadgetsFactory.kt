@@ -7,15 +7,15 @@ sealed class SupportedGadgetsFactory {
 
     abstract fun create(): GadgetsFactory
 
-    object SamsungGadgets: SupportedGadgetsFactory() {
+    object SamsungGadgetsFactory: SupportedGadgetsFactory() {
         override fun create(): GadgetsFactory = SamsungGadgetsFactory()
     }
 
-    object AppleGadgets: SupportedGadgetsFactory() {
+    object AppleGadgetsFactory: SupportedGadgetsFactory() {
         override fun create(): GadgetsFactory = AppleGadgetsFactory()
     }
 
     companion object {
-        val SUPPORTED_GADGETS = listOf<SupportedGadgetsFactory>(SamsungGadgets, AppleGadgets)
+        val SUPPORTED_GADGETS_FACTORY = listOf<SupportedGadgetsFactory>(SamsungGadgetsFactory, AppleGadgetsFactory)
     }
 }
