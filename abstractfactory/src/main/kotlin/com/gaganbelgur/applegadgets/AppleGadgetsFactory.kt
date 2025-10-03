@@ -4,7 +4,7 @@ import com.gaganbelgur.GadgetsFactory
 import com.gaganbelgur.Laptop
 import com.gaganbelgur.SmartWatch
 
-class AppleGadgetsFactory: GadgetsFactory {
+internal class AppleGadgetsFactory: GadgetsFactory {
 
     override fun createLaptop(): Laptop = AppleLaptop()
 
