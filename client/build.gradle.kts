@@ -13,6 +13,7 @@ dependencies {
     implementation(project(":singleton"))
     implementation(project(":factory"))
     implementation(project(":abstractfactory"))
+    implementation(project(":builder"))
     testImplementation(kotlin("test"))
 }
 
