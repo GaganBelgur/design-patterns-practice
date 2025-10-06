@@ -1,32 +1,28 @@
-public class Profile {
+package com.gaganbelgur;
+
+public class ProfileJava {
 
     private final String name;
     private final String phone;
     private final String birthDate;
     private final String email;
 
-    private Profile(ProfileBuilder builder) {
+    private ProfileJava(ProfileBuilder builder) {
         this.name = builder.name;
         this.phone = builder.phone;
         this.birthDate = builder.birthDate;
         this.email = builder.email;
     }
 
-
     public static class ProfileBuilder {
-        private String name;
-        private String phone;
+        private final String name;
+        private final String phone;
         private String birthDate;
         private String email;
 
-        public ProfileBuilder setName(String name) {
+        public ProfileBuilder(String name, String phone) {
             this.name = name;
-            return this;
-        }
-
-        public ProfileBuilder setPhone(String phone) {
             this.phone = phone;
-            return this;
         }
 
         public ProfileBuilder setBirthDate(String birthDate) {
@@ -39,8 +35,8 @@ public class Profile {
             return this;
         }
 
-        public Profile build() {
-            return new Profile(this);
+        public ProfileJava build() {
+            return new ProfileJava(this);
         }
     }
 
