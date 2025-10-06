@@ -1,0 +1,52 @@
+Builder Pattern
+
+What is it?
+
+The Builder Pattern is a creational design pattern that allows you to construct complex objects step by step.
+It separates the construction of an object from its representation,
+so the same construction process can create different representations.
+
+In short: It separates how an object is built from its final representation.
+
+When to Use It?
+
+Objects are complex with many fields, especially optional ones.
+You want to avoid “telescoping constructors” (constructors with many parameters).
+You want step-by-step object creation (fluent and readable).
+You want immutability in the final object.
+
+Why to Use It?
+
+Provides clear, readable code for complex objects.
+Supports optional parameters without multiple constructors.
+Allows validation or logic during construction.
+Makes the final object immutable and safe to use.
+
+How to Use It?
+Step 1: Define the Main Class
+(e.g., Profile).
+
+Step 2: Define an inner Builder class
+(e.g.,Profile Builder).
+
+Step 3: Make all variables in Builder private with default values (or private set) to enforce encapsulation.
+(e.g., phone, email).
+
+Step 4: Provide setter methods for optional fields, returning the Builder instance (chaining).
+(e.g., setPhone(String Phone), setEmail()).
+
+Step 5: Add a build() method in Builder to create the main class instance.
+fun build() = Profile(this)
+
+Step 6: Make the main class constructor private, accept the Builder object, and
+assign Builder variables to main class variables.
+
+private constructor(builder: ProfileBuilder) {
+    this.name = builder.name
+}
+
+Take Away
+Mandatory parameters → Builder constructor.
+Optional parameters → setter methods with chaining (apply).
+Immutable final object → safe and clean.
+Clean, readable, idiomatic Kotlin.
