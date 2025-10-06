@@ -2,23 +2,24 @@ package com.gaganbelgur.com.gaganbelgur
 
 class Profile private constructor(builder: ProfileBuilder) {
 
-    val name: String = builder.name
-    val phone: String = builder.phone
-    val email: String = builder.email
-    val birthDay: String = builder.birthDay
+    private val name: String = builder.name
+    private val phone: String = builder.phone
+    private val email: String = builder.email
+    private val birthDay: String = builder.birthDay
+
+    fun getName() = name
+
+    fun getPhone() = phone
+
+    fun getEmail() = email
+
+    fun getBirthDay() = birthDay
 
     class ProfileBuilder {
-        var name: String = ""
-            private set
-
-        var phone: String = ""
-            private set
-
-        var email: String = ""
-            private set
-
-        var birthDay: String = ""
-            private set
+        internal var name: String = ""
+        internal var phone: String = ""
+        internal var email: String = ""
+        internal var birthDay: String = ""
 
         fun setName(name: String): ProfileBuilder {
             this.name = name
