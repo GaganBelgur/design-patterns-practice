@@ -17,8 +17,8 @@ It serves as both a **learning reference** and a **ready-to-use guide** for inte
 ### Creational Patterns
 - [x] Singleton
 - [x] Factory Method
-- [ ] Abstract Factory
-- [ ] Builder
+- [x] Abstract Factory
+- [x] Builder
 - [ ] Prototype
 
 ### Structural Patterns
