@@ -14,6 +14,7 @@ dependencies {
     implementation(project(":factory"))
     implementation(project(":abstractfactory"))
     implementation(project(":builder"))
+    implementation(project(":prototype"))
     testImplementation(kotlin("test"))
 }
 
