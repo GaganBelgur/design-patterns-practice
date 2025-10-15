@@ -25,4 +25,15 @@ fun main() {
     println("Cloned  Hashcode: ${cloned.hashCode()}")
     println("Copied  Hashcode: ${copied.hashCode()}")
     println("Updated  Hashcode: ${updated.hashCode()}")
+
+    val originalAccountWOP = AccountWithoutProtoType(
+        name = "Gagan Belgur",
+        phone = "8844662224",
+        email = "gaganbelgur@abc.com",
+    )
+
+    println("OriginalAWOP Hashcode: ${originalAccountWOP.hashCode()}")
+
+    val copiedAWOP = originalAccountWOP.copy()
+    println("copiedAWOP Hashcode: ${copiedAWOP.hashCode()}")
 }
