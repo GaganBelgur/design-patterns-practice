@@ -1,0 +1,45 @@
+Prototype Pattern
+
+What is it?
+
+The Prototype Pattern is a creational design pattern that allows you to
+create new objects by copying existing ones (called prototypes), instead of creating them from scratch.
+
+It focuses on object cloning — creating a duplicate of an existing object, possibly with some modifications.
+The key idea: Avoid reinitializing or reconstructing complex objects, just clone and tweak them.
+
+In Short: Instead of building a new object from scratch, you copy an existing object and modify it as needed.
+
+When to Use It?
+
+Use Prototype Pattern when:
+Creating a new object is expensive or time-consuming.
+You need to create many similar objects with minor differences.
+You want to avoid complex initialization logic.
+You want runtime flexibility — the exact type of object being cloned can vary dynamically.
+
+Why to Use It?
+
+Saves resources and time by reusing existing objects.
+Avoids repetitive initialization of complex objects.
+Simplifies object creation when multiple configurations are needed.
+Encourages decoupling from concrete classes — code works with clones, not constructors.
+
+How to Use It?
+
+Steps:
+1. Define a Prototype interface (or abstract class)
+   It should declare a clone() or copy() method.
+
+2. Implement the Prototype in concrete class.
+
+3. Implement the clone() method to return a copy of the object.
+   This can be a shallow copy (copy references) or deep copy (copy everything).
+
+4. Use the clone() method to create new objects by copying existing ones.
+
+Take Away:
+Prototype Pattern is about cloning existing objects.
+It’s useful when object creation is costly or complex.
+It promotes reuse and flexibility in object creation.
+It’s a powerful tool in scenarios where many similar objects are needed with slight variations.
