@@ -1,0 +1,62 @@
+Adapter Pattern
+
+What is it?
+
+The Adapter Pattern is a structural design pattern that allows objects
+with incompatible interfaces to work together. It acts as a bridge (translator) between
+two unrelated interfaces — converting one interface into another expected by the client.
+
+In short:
+Adapter makes old code talk to new code — without modifying either.
+
+When to Use It?
+
+You want to integrate legacy or third-party code into your new system.
+Two classes should work together, but their interfaces don’t match.
+You can’t modify the existing class (e.g., third-party library, legacy module).
+You need backward compatibility when migrating or upgrading systems.
+
+Why to Use It?
+
+Reuse existing code without altering it.
+Avoid rewriting or duplicating logic.
+Keep client code clean and consistent — always use the new interface.
+Improve flexibility by isolating external dependencies.
+Centralize “glue code” in one place (the adapter), not spread across app logic.
+
+How to Use It?
+
+Step 1: Identify the target interface (what your client expects).
+interface PaymentProcessor {
+    fun pay(amount: Double, currency: String)
+}
+
+Step 2: Create the existing class with an incompatible interface.
+class LegacyPaymentSystem {
+    fun makePayment(amountInCents: Int, currencyCode: String) {
+        println("Processing payment of $amountInCents cents in $currencyCode using LegacyPaymentSystem")
+    }
+}
+
+Step 3: Create the Adapter class that implements the target interface
+class PaymentAdapter(private val legacyPaymentSystem: LegacyPaymentSystem) : PaymentProcessor {
+    override fun pay(amount: Double, currency: String) {
+        val amountInCents = (amount * 100).toInt()
+        legacyPaymentSystem.makePayment(amountInCents, currency)
+    }
+}
+
+Step 4: Client code uses the target interface
+fun main() {
+    val legacyPaymentSystem = LegacyPaymentSystem()
+    val paymentProcessor: PaymentProcessor = PaymentAdapter(legacyPaymentSystem)
+
+    // Client code uses the new interface
+    paymentProcessor.pay(29.99, "USD")
+}
+
+Take Away
+The Adapter Pattern is a powerful way to integrate incompatible interfaces,
+enabling code reuse and flexibility without modifying existing classes.
+It’s especially useful when dealing with legacy systems or third-party libraries.
+By introducing an adapter, you can keep your client code clean and focused on the expected interface.
