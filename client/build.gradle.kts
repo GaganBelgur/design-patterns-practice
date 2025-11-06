@@ -16,6 +16,7 @@ dependencies {
     implementation(project(":builder"))
     implementation(project(":prototype"))
     implementation(project(":adapter"))
+    implementation(project(":bridge"))
     testImplementation(kotlin("test"))
 }
 
