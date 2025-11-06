@@ -1,5 +1,13 @@
 package com.gaganbelgur.com.gaganbelgur.shapes
 
-interface Shape {
-    fun draw(): String
+import com.gaganbelgur.com.gaganbelgur.colors.Color
+
+abstract class Shape {
+    protected val color: Color
+
+    constructor(color: Color) {
+        this.color = color
+    }
+
+    abstract fun draw(): String
 }
