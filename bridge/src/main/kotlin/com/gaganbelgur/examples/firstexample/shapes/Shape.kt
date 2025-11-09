@@ -1,6 +1,6 @@
-package com.gaganbelgur.com.gaganbelgur.shapes
+package com.gaganbelgur.com.gaganbelgur.examples.firstexample.shapes
 
-import com.gaganbelgur.com.gaganbelgur.colors.Color
+import com.gaganbelgur.com.gaganbelgur.examples.firstexample.colors.Color
 
 abstract class Shape {
     protected val color: Color

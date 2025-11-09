@@ -1,9 +1,9 @@
 package com.gaganbelgur
 
-import com.gaganbelgur.com.gaganbelgur.colors.BlueColor
-import com.gaganbelgur.com.gaganbelgur.colors.WhiteColor
-import com.gaganbelgur.com.gaganbelgur.shapes.CircleShape
-import com.gaganbelgur.com.gaganbelgur.shapes.SquareShape
+import com.gaganbelgur.com.gaganbelgur.examples.firstexample.colors.BlueColor
+import com.gaganbelgur.com.gaganbelgur.examples.firstexample.colors.WhiteColor
+import com.gaganbelgur.com.gaganbelgur.examples.firstexample.shapes.CircleShape
+import com.gaganbelgur.com.gaganbelgur.examples.firstexample.shapes.SquareShape
 
 fun main() {
     val blueCircleShape = CircleShape(BlueColor())
