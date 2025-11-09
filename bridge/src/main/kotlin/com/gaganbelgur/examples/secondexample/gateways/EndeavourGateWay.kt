@@ -1,4 +1,4 @@
-package com.gaganbelgur.com.gaganbelgur.examples.secondexample
+package com.gaganbelgur.com.gaganbelgur.examples.secondexample.gateways
 
 class EndeavourGateWay: PaymentGateWay {
     override fun processPayment(orderId: String, amount: Double): String {
