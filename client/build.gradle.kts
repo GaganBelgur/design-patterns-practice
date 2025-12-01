@@ -17,7 +17,11 @@ dependencies {
     implementation(project(":prototype"))
     implementation(project(":adapter"))
     implementation(project(":bridge"))
+    implementation(project(":lrucache"))
     testImplementation(kotlin("test"))
+
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2")
+
 }
 
 tasks.test {

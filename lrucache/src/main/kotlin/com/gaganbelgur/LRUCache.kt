@@ -1,62 +1,36 @@
 package com.gaganbelgur.com.gaganbelgur
 
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.SupervisorJob
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.isActive
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.supervisorScope
-import java.util.PriorityQueue
+import kotlinx.coroutines.*
+import java.lang.AutoCloseable
+import java.util.*
 import java.util.concurrent.ConcurrentHashMap
 import java.util.concurrent.locks.ReentrantLock
 import kotlin.concurrent.withLock
+import kotlin.time.Duration
+import kotlin.time.Duration.Companion.milliseconds
 
-class LRUCache<K : Any, V>(private val capacity: Int, ttlSeconds: Long) {
+class LRUCache<K : Any, V : Any>(
+    private val capacity: Int,
+    ttlSeconds: Long,
+    cleanerIntervalMillis: Duration = 1000.milliseconds
+): AutoCloseable {
 
     private val ttlInMillis = ttlSeconds * 1000
-    private val cache = ConcurrentHashMap<K, Node<K, V>>()
+    private val cache: ConcurrentHashMap<K, Node<K, V>> = ConcurrentHashMap()
     private val expiryQueue = PriorityQueue<Node<K, V>>(compareBy { it.expiryTime })
 
     private val head = Node<K, V>()
     private val tail = Node<K, V>()
 
     private val locker = ReentrantLock()
+    private val scope = CoroutineScope(SupervisorJob() + Dispatchers.Default)
     private val cleanerJob: Job
-    private val scope = CoroutineScope(Dispatchers.IO + SupervisorJob())
 
     init {
         head.next = tail
         tail.prev = head
 
-        cleanerJob = scope.launch {
-            while (isActive) {
-                try {
-                    evictExpired()
-                    delay(1000)
-                } catch (exception: Exception) {
-                    break
-                }
-            }
-        }
-    }
-
-    private fun evictExpired() {
-        val now = System.currentTimeMillis()
-        locker.withLock {
-            while (expiryQueue.isNotEmpty() && expiryQueue.peek().expiryTime <= now) {
-                val expired = expiryQueue.poll()
-                expired.key?.let {
-                    cache.remove(it)
-                }
-                removeNode(expired)
-            }
-        }
-    }
-
-    fun close() {
-        cleanerJob.cancel()
+        cleanerJob = startCleaner(cleanerIntervalMillis)
     }
 
     fun get(key: K): V? {
@@ -98,6 +72,41 @@ class LRUCache<K : Any, V>(private val capacity: Int, ttlSeconds: Long) {
                 }
             }
         }
+    }
+
+    private fun startCleaner(cleanerInterval: Duration): Job {
+        return scope.launch {
+            while (isActive) {
+                try {
+                    evictExpired()
+                    delay(cleanerInterval)
+                } catch (exception: Exception) {
+                    println(exception.message)
+                    break
+                }
+            }
+        }
+    }
+
+    private fun evictExpired() {
+        val now = System.currentTimeMillis()
+        locker.withLock {
+            while (expiryQueue.isNotEmpty() && expiryQueue.peek().expiryTime <= now) {
+                val expired = expiryQueue.poll()
+                expired.key?.let {
+                    cache.remove(it)
+                }
+                removeNode(expired)
+            }
+        }
+    }
+
+    override fun close() {
+        cleanerJob.cancel()
+        runBlocking {
+            cleanerJob.join()
+        }
+        scope.cancel()
     }
 
     private fun moveToHead(node: Node<K, V>) {

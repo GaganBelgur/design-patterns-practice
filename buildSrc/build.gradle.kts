@@ -11,6 +11,6 @@ repositories {
 }
 
 dependencies {
-    implementation(kotlin("gradle-plugin", "1.9.0"))
+    implementation(kotlin("gradle-plugin", "2.1.0"))
     implementation(kotlin("stdlib"))
 }
