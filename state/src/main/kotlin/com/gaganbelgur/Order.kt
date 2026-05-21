@@ -32,15 +32,20 @@ class Order(private var orderState: String = "ORDER_PLACED") {
     }
 
     fun progressToNextState() {
-        if (orderState == "ORDER_PLACED") {
-            orderState = "PREPARING"
-        } else if (orderState == "PREPARING") {
-            orderState = "OUT_FOR_DELIVERY"
-        } else if (orderState == "OUT_FOR_DELIVERY") {
-            orderState = "DELIVERED"
-        } else {
-            println("End of State")
-            return
+        orderState = when (orderState) {
+            "ORDER_PLACED" -> {
+                "PREPARING"
+            }
+            "PREPARING" -> {
+                "OUT_FOR_DELIVERY"
+            }
+            "OUT_FOR_DELIVERY" -> {
+                "DELIVERED"
+            }
+            else -> {
+                println("End of State")
+                return
+            }
         }
     }
 }

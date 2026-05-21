@@ -13,4 +13,6 @@ class PreparedState: OrderContext {
     override fun cancelOrder() = setState(CancelledState())
 
     override fun getState(): OrderContext = orderContext
+
+    override fun toString(): String = "Order Prepared State"
 }

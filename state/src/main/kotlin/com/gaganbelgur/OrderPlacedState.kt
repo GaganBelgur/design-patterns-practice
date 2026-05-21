@@ -8,13 +8,11 @@ class OrderPlacedState: OrderContext {
         this.orderContext = orderContext
     }
 
-    override fun nextOrder() {
-       setState(PreparedState())
-    }
+    override fun nextOrder() = setState(PreparedState())
 
-    override fun cancelOrder() {
-        setState(CancelledState())
-    }
+    override fun cancelOrder() = setState(CancelledState())
 
     override fun getState(): OrderContext = orderContext
+
+    override fun toString(): String = "Order Placed State"
 }
