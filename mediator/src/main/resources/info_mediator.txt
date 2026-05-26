@@ -1,0 +1,38 @@
+The mediator pattern is a behavioral design pattern that centralizes complex
+communications between the objects into a single mediation object.
+
+Instead of objects communicating between them directly talking to each other,
+rather they communicate via the mediator class, which is how the other users
+comes to know about the updates.
+
+Example:
+1. Principal in the school every communication goes via the principal
+
+Without mediator:
+Teacher <----> Student
+Teacher <----> Accountant
+Student <----> Principal
+Accountant <----> Principal
+
+Everybody talks to everybody.
+
+This creates:
+
+tight coupling
+too many dependencies
+hard maintenance
+chaotic communication
+
+With mediator:
+
+Teacher -----\
+Student ------> Principal (Mediator)
+Accountant --/
+
+Nobody talks directly.
+
+Everyone talks only to the mediator.
+
+2. WhatsApp Group
+When we send the messages tagging others but under the hood we are
+sending it to the WhatsApp servers, which is basically a mediator.
