@@ -14,4 +14,6 @@ fun main() {
     for(video in playList.getVideos()) {
         println(video.title)
     }
+
+    //Step 1: Introduce the Iterator interface
 }
