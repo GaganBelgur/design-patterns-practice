@@ -1,0 +1,10 @@
+The iterator pattern provides a way to access the elements of a collection sequentially
+by hiding the internal implementation and the data structure that has been used.
+
+This means whether the internally used collections can be an array, graph or a tree.
+It traverses the elements without exposing the underlying operations and also client
+can call the iterator operations without worrying about how the data is stored or managed.
+
+Best example can be the Mobile set up process where we click the next button after reading the instructions.
+We don't know what's happening inside. It actually hides the complexity of what's going on behind the scenes.
+
