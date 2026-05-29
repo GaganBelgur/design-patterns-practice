@@ -7,7 +7,7 @@ Issues with this code
 3. No control over traversal
 4. Difficult to support multiple independent traversals
 */
-class YoutubePlaylist {
+class SpotifyPlaylist {
     private val videos = mutableListOf<Video>()
 
     fun addVideo(video: Video) = videos.add(video)
