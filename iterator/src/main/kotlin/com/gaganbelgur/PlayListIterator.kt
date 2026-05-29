@@ -4,5 +4,5 @@ interface PlayListIterator {
 
     fun hasNext(): Boolean
 
-    fun next(): Video
+    fun next(): Video?
 }
