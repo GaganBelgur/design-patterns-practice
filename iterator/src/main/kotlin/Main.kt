@@ -9,7 +9,7 @@ fun main() {
     val playList = SpotifyPlaylist()
 
     playList.addVideo(Video("AI"))
-    playList.addVideo(Video("STAR"))
+    playList.addVideo(Video("ROBOTICS"))
 
     for(video in playList.getVideos()) {
         println(video.title)
