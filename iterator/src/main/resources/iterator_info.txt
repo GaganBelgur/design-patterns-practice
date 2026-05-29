@@ -8,3 +8,22 @@ can call the iterator operations without worrying about how the data is stored o
 Best example can be the Mobile set up process where we click the next button after reading the instructions.
 We don't know what's happening inside. It actually hides the complexity of what's going on behind the scenes.
 
+How can we leverage Iterator Pattern
+
+1.You want to traverse a collection without exposing its internal structure:
+    Instead of revealing whether it's an ArrayList, Vector, or a custom tree,
+    the pattern lets clients access elements one-by-one, safely and uniformly.
+
+2.You need multiple ways to traverse a collection:
+    For example, forward traversal, reverse traversal, or skipping every second element.
+    Each of these can be handled by a different iterator implementation without changing
+    the collection itself.
+
+3.You want a unified way to traverse different types of collections:
+    Whether it’s a list of videos, a set of songs, or a stack of documents,
+    clients should be able to iterate over them using a common interface.
+
+4.You want to decouple iteration logic from collection logic:
+    By separating how elements are stored from how they’re accessed,
+    you reduce complexity and improve maintainability.
+    Changes in iteration logic won’t affect how the collection is structured.
