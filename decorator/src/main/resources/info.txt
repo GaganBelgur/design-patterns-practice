@@ -1,0 +1,35 @@
+The Decorator Pattern is a structural design pattern that allows behavior to be added to individual objects,
+dynamically at runtime, without affecting the behavior of other objects from the same class.
+
+It wraps an object inside another object that adds new behaviors or responsibilities at runtime,
+keeping the original object's interface intact.
+
+Think of it as wrapping a gift box:
+
+Gift = Original Object
+Wrapper = Decorator
+Another Wrapper = Another Decorator
+
+Each wrapper adds something extra while keeping the original gift intact.
+
+PROBLEM:
+Imagine we have a simple coffee shop application where we want to create different types of coffee
+with various add-ons like milk, sugar, and whipped cream.
+
+We could create a separate class for each combination of coffee and add-ons,
+but this would lead to a large number of classes and maintenance issues.
+
+SOLUTION:
+Using the Decorator Pattern, we can create a base Coffee class and then create decorators for each add-on.
+This way, we can mix and match the add-ons without creating a new class for every combination.
+
+For example:
+- Base Coffee class: `Coffee`
+- Decorators: `MilkDecorator`, `SugarDecorator`, `WhippedCreamDecorator`
+
+Each decorator will implement the same interface as the base Coffee class and
+will add its own behavior while delegating the core functionality to the wrapped Coffee object.
+
+This allows us to create complex coffee orders by simply wrapping the base Coffee object with the desired decorators,
+without needing to create a new class for every possible combination of coffee and add-ons.
+
