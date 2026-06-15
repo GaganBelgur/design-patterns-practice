@@ -33,3 +33,27 @@ will add its own behavior while delegating the core functionality to the wrapped
 This allows us to create complex coffee orders by simply wrapping the base Coffee object with the desired decorators,
 without needing to create a new class for every possible combination of coffee and add-ons.
 
+What Happens internally
+Coffee coffee =
+    new ChocolateDecorator(
+        new SugarDecorator(
+            new MilkDecorator(
+                new SimpleCoffee()
+            )
+        )
+    );
+
+Objects are wrapped in layers, and each decorator adds its own behavior while maintaining the
+original interface of the Coffee class.
+
+When we call methods on the final `coffee` object,
+it will execute the behavior of all the decorators in the order they were added,
+resulting in a customized coffee experience.
+
+ChocolateDecorator
+        ↓
+SugarDecorator
+        ↓
+MilkDecorator
+        ↓
+SimpleCoffee
