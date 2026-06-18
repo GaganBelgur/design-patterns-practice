@@ -1,0 +1,32 @@
+The Observer pattern is a software design pattern in which an object, called the subject,
+maintains a list of its dependents, called observers,
+and notifies them automatically of any state changes,
+usually by calling one of their methods.
+It is mainly used to implement distributed event handling systems.
+
+In the Observer pattern, the subject is responsible for managing the list of observers and notifying them of any changes.
+The observers, on the other hand, are responsible for updating themselves based on the notifications they receive from the subject.
+This pattern promotes loose coupling between the subject and its observers, allowing for greater flexibility and reusability of code.
+It is commonly used in scenarios such as user interface frameworks, event-driven programming, and real-time systems
+where multiple components need to be updated in response to changes in the state of an object.
+
+Real-world examples of the Observer pattern include:
+1. A news agency (subject) that notifies its subscribers (observers) about breaking news.
+2. A stock market ticker (subject) that updates its subscribers (observers) with the latest stock prices.
+
+How Observer pattern solves problems:
+1. Decoupling:
+   The Observer pattern decouples the subject from its observers, allowing them to evolve independently.
+   This promotes flexibility and reusability of code.
+
+2. Dynamic relationships:
+   Observers can be added or removed at runtime without affecting the subject,
+   allowing for dynamic relationships between the subject and its observers.
+
+3. Event-driven programming:
+   The Observer pattern is well-suited for event-driven programming,
+   where multiple components need to be updated in response to changes in the state of an object
+
+4. Scalability:
+   The Observer pattern can handle a large number of observers without affecting the performance of the subject,
+   making it suitable for scenarios with many dependent components.
