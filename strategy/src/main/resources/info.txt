@@ -1,0 +1,35 @@
+The Strategy pattern is a behavioral design pattern that enables selecting an algorithm's behavior at runtime.
+It defines a family of algorithms, encapsulates each one, and makes them interchangeable.
+
+This pattern allows the algorithm to vary independently of clients that use it.
+
+it is primarily focused on changing the behavior of an object dynamically at runtime by encapsulating the algorithms in separate classes.
+
+Sample Bad Code:
+
+```java
+public class PaymentProcessor {
+    public void processPayment(String paymentType) {
+        if (paymentType.equals("CreditCard")) {
+            // process credit card payment
+        } else if (paymentType.equals("PayPal")) {
+            // process PayPal payment
+        } else if (paymentType.equals("Bitcoin")) {
+            // process Bitcoin payment      }
+    }
+}
+```
+
+Why the code is considered as a bad?
+
+High Modification Risk:
+Adding a new payment method requires modifying this exact file, which can introduce bugs into existing, tested code.
+
+Tight Coupling:
+The PaymentProcessor class is forced to know the intimate details of every single payment method.
+
+Poor Scalability:
+As the number of payment methods grows, this if-else chain will become massive, making the code hard to read and maintain.
+
+Testing Overhead:
+Every time you add a payment method, you must re-test the entire PaymentProcessor class instead of just testing the new feature.
