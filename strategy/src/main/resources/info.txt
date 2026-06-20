@@ -33,3 +33,27 @@ As the number of payment methods grows, this if-else chain will become massive, 
 
 Testing Overhead:
 Every time you add a payment method, you must re-test the entire PaymentProcessor class instead of just testing the new feature.
+
+Pros and Cons of Strategy Pattern
+
+Pros
+
+1. Supports Runtime behavioral changes
+   At the runtime, strategies can be swapped or set new strategy.
+
+2. Adheres to OCP
+   New strategies can be added without modifying existing code.
+
+3. Easy to add new behaviors
+   Every behavior is encapsulated inside the class and can be used in plug and play.
+
+4. Promotes Inheritance instead of Composition
+    The Strategy pattern promotes the use of inheritance to define new behaviors, allowing for a more modular and extensible design.
+
+Cons:
+
+1. Increased Number of Classes
+   Each strategy requires its own class, which can lead to a number of classes in the codebase.
+
+2. Slight overhead due to interfaces
+   Involves extra structure around interfaces which cen be avoided for simple logic.
