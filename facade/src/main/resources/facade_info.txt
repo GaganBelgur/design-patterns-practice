@@ -1,0 +1,75 @@
+Facade Pattern
+
+What is it?
+
+The Facade pattern is a structural design pattern that provides a simplified interface to a complex subsystem.
+It wraps a set of classes and provides a single, unified interface to interact with them,
+making the subsystem easier to use and reducing the coupling between the client and the subsystem.
+
+In short: It provides a simplified interface to a complex subsystem.
+
+When to Use It?
+
+Use the Facade pattern when you want to provide a simple interface to a complex subsystem,
+hide the complexity of the subsystem from the client, or
+reduce the coupling between the client and the subsystem.
+
+Why to Use It?
+
+The Facade pattern is useful when you want to simplify the interaction with a complex subsystem,
+improve the usability of the system, or reduce the dependencies between the client and the subsystem.
+It helps in creating a cleaner, more maintainable codebase by abstracting away the complexity of the underlying implementation.
+
+How to Use It?
+
+To use the Facade pattern, you need to create a facade class that provides a simplified interface to the complex subsystem.
+The facade class should encapsulate the complexity of the subsystem and provide a single,
+unified interface for the client to interact with.
+
+``` kotlin
+// Step 1: Define the complex subsystem classes
+class PaymentService  {
+    fun makePayment(String accountId, double amount) {
+        println("Payment of ₹" + amount + " successful for account " + accountId)
+    }
+}
+
+class NotificationService {
+    fun sendNotification(String message) {
+        println("Notification sent: " + message)
+    }
+}
+
+class OrderService {
+    fun placeOrder(String accountId, double amount) {
+        println("Order placed for account " + accountId + " with amount ₹" + amount)
+    }
+}
+
+class InventoryService {
+    fun updateInventory(String productId, int quantity) {
+        println("Inventory updated for product " + productId + " with quantity " + quantity)
+    }
+}
+
+// Step 2: Define the Facade
+class Facade {
+    private val paymentService = PaymentService()
+    private val notificationService = NotificationService()
+    private val orderService = OrderService()
+    private val inventoryService = InventoryService()
+
+    fun simplifiedOperation() {
+        paymentService.makePayment("account1", 100.0)
+        notificationService.sendNotification("Order placed successfully!")
+        orderService.placeOrder("account1", 100.0)
+        inventoryService.updateInventory("product1", 10)
+    }
+}
+```
+This code works but its tightly coupled and also client is deciding the sequence of operations.
+This will be problematic if the sequence of operations changes in the future.
+So we can create a facade class that will handle the sequence of operations and client will just call the facade class method.
+
+Using Facade Pattern, we can simplify the interaction with the complex subsystem and provide a cleaner, more maintainable codebase.
+The client can now interact with the facade class without worrying about the underlying complexity of the subsystem.
