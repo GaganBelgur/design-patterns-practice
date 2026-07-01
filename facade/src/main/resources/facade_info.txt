@@ -29,25 +29,25 @@ unified interface for the client to interact with.
 ``` kotlin
 // Step 1: Define the complex subsystem classes
 class PaymentService  {
-    fun makePayment(String accountId, double amount) {
+    fun makePayment(accountId: String, amount: Double) {
         println("Payment of ₹" + amount + " successful for account " + accountId)
     }
 }
 
 class NotificationService {
-    fun sendNotification(String message) {
+    fun sendNotification(message: String) {
         println("Notification sent: " + message)
     }
 }
 
 class OrderService {
-    fun placeOrder(String accountId, double amount) {
+    fun placeOrder(accountId: String, amount: Double) {
         println("Order placed for account " + accountId + " with amount ₹" + amount)
     }
 }
 
 class InventoryService {
-    fun updateInventory(String productId, int quantity) {
+    fun updateInventory(productId: String, quantity: Int) {
         println("Inventory updated for product " + productId + " with quantity " + quantity)
     }
 }
