@@ -1,0 +1,99 @@
+Composite Pattern
+
+What it is?
+The composite pattern is a structural design pattern that allows you to compose objects into tree structures
+to represent part-whole hierarchies. It lets clients treat individual objects and compositions of objects uniformly.
+
+In Short: It allows you to compose objects into tree structures to represent part-whole hierarchies.
+
+When to Use It?
+Use the composite pattern when you want to represent part-whole hierarchies of objects,
+when you want to treat individual objects and compositions of objects uniformly, or
+when you want to simplify the client code that interacts with complex object structures.
+
+Why to use it?
+The composite pattern is useful when you want to simplify the client code that interacts with complex object structures
+or when you want to treat individual objects and compositions of objects uniformly.
+It helps in creating a cleaner, more maintainable codebase by abstracting away the complexity of the underlying implementation.
+
+How to Use It?
+To use the composite pattern, you need to define a common interface for both individual objects and compositions of objects.
+Then, you can create concrete classes that implement this interface and represent both individual objects and compositions of objects.
+Finally, you can create a client that interacts with the common interface, allowing it to treat individual objects and compositions of objects uniformly.
+
+```` kotlin
+class Product (private val name: String, private val price: Double) {
+    fun display() {
+        println("Product: $name, Price: $price")
+    }
+
+    fun getPrice(): Double {
+        return price
+    }
+}
+
+class ProductBundle(private val name: String) {
+    private val products = mutableListOf<Product>()
+
+    fun addProduct(product: Product) {
+        products.add(product)
+    }
+
+    fun removeProduct(product: Product) {
+        products.remove(product)
+    }
+
+    fun display() {
+        println("Product Bundle: $name")
+        for (product in products) {
+            product.display()
+        }
+    }
+
+    fun getTotalPrice(): Double {
+        return products.sumOf { it.getPrice() }
+    }
+}
+
+class Client {
+    fun main() {
+        val book = Product("POWER", 1000.0)
+        val pen = Product("PEN", 10.0)
+        val bundle = ProductBundle("Stationery Bundle")
+        bundle.addProduct(book)
+        bundle.addProduct(pen)
+
+        bundle.display()
+        println("Total Price: ${bundle.getTotalPrice()}")
+
+        val headphones = Product("Headphones", 500.0)
+        val iPhone = Product("iPhone", 1000.0)
+        val electronicsBundle = ProductBundle("Electronics Bundle")
+        electronicsBundle.addProduct(headphones)
+        electronicsBundle.addProduct(iPhone)
+        electronicsBundle.display()
+        println("Total Price: ${electronicsBundle.getTotalPrice()}")
+
+        val list = mutableListOf<Object>()
+        list.add(book)
+        list.add(bundle)
+        list.add(electronicsBundle)
+
+        val totalPrice = list.sumOf {
+            when (it) {
+                is Product -> it.getPrice()
+                is ProductBundle -> it.getTotalPrice()
+                else -> 0.0
+            }
+        }
+        println("Total Price of all items: $totalPrice")
+    }
+}
+````
+
+The issue with the above implementation is that the client code has to check the type of each object in the list
+and call the appropriate method to get the price.
+This violates the Open/Closed Principle, as adding a new type of object would require modifying the client code.
+
+To solve this issue, we can create a common interface for both Product and ProductBundle,
+and have both classes implement this interface.
