@@ -97,3 +97,14 @@ This violates the Open/Closed Principle, as adding a new type of object would re
 
 To solve this issue, we can create a common interface for both Product and ProductBundle,
 and have both classes implement this interface.
+
+Pros and Cons of Composite Pattern
+
+Pros:
+- Simplifies the client code that interacts with complex object structures.
+- Allows you to treat individual objects and compositions of objects uniformly.
+- Makes it easier to add new types of objects to the system without modifying the client code.
+
+Cons:
+- Can make the design more complex, as it introduces additional classes and interfaces.
+- Can make it harder to understand the relationships between objects, especially in large systems.
