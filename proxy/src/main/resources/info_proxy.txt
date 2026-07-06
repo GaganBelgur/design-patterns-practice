@@ -11,3 +11,45 @@ A proxy acts as an intermediary that implements the same interface as the origin
 allowing it to intercept and manage requests to the real object.
 
 When to Use It?
+- When you need to control access to an object, such as for access control or lazy initialization.
+- When you want to add additional functionality to an object without modifying its code, such as logging or caching.
+- When you want to provide a placeholder for an object that is expensive to create or use,
+  allowing you to defer its creation until it is actually needed.
+
+Why to Use It?
+The Proxy pattern is useful when you want to control access to an object, add additional functionality,
+or provide a placeholder for an expensive object. It helps in creating a cleaner, more maintainable
+codebase by separating concerns and encapsulating the complexity of the underlying implementation.
+
+How to Use It?
+To use the Proxy pattern, you need to define a common interface for both the real object and the proxy object.
+Then, you can create a concrete class that implements this interface and represents the real object.
+Next, you can create a proxy class that also implements the same interface and acts as an intermediary between the client and the real object.
+Finally, you can create a client that interacts with the proxy object, allowing it to control access to the real object and add additional functionality as needed.
+
+``` kotlin
+class RealVideoDownloader() {
+    fun download(url: String) {
+        println("Downloading video from $url")
+    }
+}
+
+class Client {
+    fun main() {
+        val videoDownloader = RealVideoDownloader()
+        videoDownloader.download("https://example.com/video.mp4")
+
+        val videoDownloader2 = RealVideoDownloader()
+        videoDownloader2.download("https://example.com/video2.mp4")
+    }
+}
+```
+
+Issues with the code
+1. The `RealVideoDownloader` class is directly instantiated in the `Client` class, which means
+that the client has direct access to the real object. This violates the principle of encapsulation
+and makes it difficult to control access to the real object.
+
+2. The `RealVideoDownloader` class does not implement a common interface, which means that the client
+cannot interact with the proxy object in a uniform way. This makes it difficult to add additional functionality
+to the real object without modifying its code.
