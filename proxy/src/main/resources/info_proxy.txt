@@ -53,3 +53,22 @@ and makes it difficult to control access to the real object.
 2. The `RealVideoDownloader` class does not implement a common interface, which means that the client
 cannot interact with the proxy object in a uniform way. This makes it difficult to add additional functionality
 to the real object without modifying its code.
+
+How proxy pattern solves the issues
+1. By introducing a proxy class that implements the same interface as the real object, we can
+control access to the real object and add additional functionality without modifying its code.
+
+2. By defining a common interface for both the real object and the proxy object, we can
+allow the client to interact with the proxy object in a uniform way, making it easier to add
+additional functionality to the real object without modifying its code.
+
+Pros and Cons of Proxy Pattern
+Pros:
+- Provides a placeholder for another object to control access to it.
+- Allows you to add additional functionality to an object without modifying its code.
+- Helps in creating a cleaner, more maintainable codebase by separating concerns and encapsulating the complexity of the underlying implementation.
+
+Cons:
+- Introduces additional complexity to the codebase by adding an extra layer of abstraction.
+- Adds delay to the execution of requests, as the proxy object needs to intercept and manage requests to the real object.
+- May introduce additional memory overhead, as the proxy object needs to maintain a reference to the real object.
