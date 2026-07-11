@@ -1,0 +1,75 @@
+FlyWeight Pattern
+
+What is Flyweight Pattern?
+The Flyweight Pattern is a structural design pattern used to minimize memory usage by sharing
+as much data as possible with similar objects.
+
+The Flyweight Pattern allows you to create a large number of similar objects efficiently by sharing
+common data among them, rather than creating separate instances for each object.
+
+Simple terms:
+It Separates the intrinsic state (shared data) from the extrinsic state (unique data) of an object,
+allowing you to reuse the intrinsic state across multiple objects.
+
+When to Use It?
+- When you need to create a large number of similar objects that share common data.
+- When you want to reduce memory usage and improve performance by sharing common data among objects.
+- When you want to separate the intrinsic state (shared data) from the extrinsic state (unique data) of an object.
+
+Why to Use It?
+The Flyweight Pattern is useful when you want to reduce memory usage and improve performance by sharing common data
+among a large number of similar objects. It helps in creating a cleaner, more maintainable codebase by separating
+concerns and encapsulating the complexity of the underlying implementation.
+
+How to Use It?
+To use the Flyweight Pattern, you need to define a common interface for both the intrinsic state (shared data)
+and the extrinsic state (unique data) of an object. Then, you can create a concrete class that implements this interface
+and represents the intrinsic state (shared data) of an object. Next, you can create a factory class that manages the
+creation and sharing of flyweight objects. Finally, you can create a client that interacts with the flyweight objects,
+allowing it to reuse the intrinsic state (shared data) across multiple objects.
+
+``` kotlin
+Bad Design:
+
+class Tree(private var xCoordinate: Int, private var yCoordinate: Int, private var name: String, private var color: String) {
+
+    fun draw() {
+        println("Drawing tree $name at ($xCoordinate, $yCoordinate) with color $color")
+    }
+
+}
+
+class Forest {
+    private val trees = mutableListOf<Tree>()
+
+    fun plantTree(xCoordinate: Int, yCoordinate: Int, name: String, color: String) {
+        val tree = Tree(xCoordinate, yCoordinate, name, color)
+        trees.add(tree)
+    }
+
+    fun drawForest() {
+        for (tree in trees) {
+            tree.draw()
+        }
+    }
+}
+
+class Client {
+    fun main() {
+        val forest = Forest()
+        for(int i in 0..100000) {
+            forest.plantTree(i, i, "Tree $i", "Green")
+        }
+        forest.drawForest()
+    }
+
+    println("Memory usage: ${Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory()} bytes")
+}
+```
+
+Issues with the code
+1. The `Tree` class contains both intrinsic state (name, color) and extrinsic state (xCoordinate, yCoordinate),
+which means that each instance of the `Tree` class will store the same intrinsic data, leading to increased memory usage.
+
+2. The `Forest` class creates a new `Tree` instance for each tree planted, even if the intrinsic state is the same,
+resulting in unnecessary memory allocation.
