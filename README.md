@@ -19,29 +19,28 @@ It serves as both a **learning reference** and a **ready-to-use guide** for inte
 - [x] Factory Method
 - [x] Abstract Factory
 - [x] Builder
-- [ ] Prototype
+- [x] Prototype
 
 ### Structural Patterns
-- [ ] Adapter
-- [ ] Bridge
-- [ ] Composite
-- [ ] Decorator
-- [ ] Facade
-- [ ] Flyweight
-- [ ] Proxy
+- [x] Adapter
+- [x] Bridge
+- [x] Composite
+- [x] Decorator
+- [x] Facade
+- [x] Flyweight
+- [x] Proxy
 
 ### Behavioral Patterns
-- [ ] Chain of Responsibility
-- [ ] Command
-- [ ] Interpreter
-- [ ] Iterator
-- [ ] Mediator
+- [x] Chain of Responsibility
+- [x] Command
+- [x] Iterator
+- [x] Mediator
 - [ ] Memento
-- [ ] Observer
-- [ ] State
-- [ ] Strategy
-- [ ] Template Method
-- [ ] Visitor
+- [x] Observer
+- [x] State
+- [x] Strategy
+- [x] Template Method
+- [x] Visitor
 
 ---
 
