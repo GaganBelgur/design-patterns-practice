@@ -73,3 +73,38 @@ which means that each instance of the `Tree` class will store the same intrinsic
 
 2. The `Forest` class creates a new `Tree` instance for each tree planted, even if the intrinsic state is the same,
 resulting in unnecessary memory allocation.
+
+How Flyweight Pattern solves the issues
+1. By separating the intrinsic state (name, color) from the extrinsic state (xCoordinate, yCoordinate) of the `Tree` class,
+   we can create a single instance of the intrinsic state and share it among multiple objects, reducing memory usage.
+2. By introducing a factory class that manages the creation and sharing of flyweight objects, we can ensure that
+   only one instance of the intrinsic state is created for each unique combination of intrinsic data, further
+   reducing memory usage and improving performance.
+
+TreeType Class:
+This acts as the flyweight object. It stores data common to all trees of a given type—like name, color, and texture.
+Instead of duplicating this data, we create only one instance per unique combination.
+
+Tree Class:
+This now only stores:
+Intrinsic data: x, y (unique to each tree)
+Reference to shared data: A TreeType instance
+
+TreeFactory Class: This is the central factory that ensures TreeType instances are reused:
+
+Memory Efficiency: Even with 1 million trees, if they all share the same TreeType, only one TreeType object is
+created and shared across all trees, reducing memory usage dramatically.
+
+Pros and Cons of Flyweight Pattern
+Pros:
+- Reduces memory usage by sharing common data among similar objects.
+- Improves performance by minimizing object creation and memory allocation.
+
+Cons:
+- Increases complexity in managing and maintaining the flyweight objects.
+- May introduce performance overhead due to the additional layer of indirection.
+
+Real-World Example:
+Google Maps uses the Flyweight Pattern to efficiently render map tiles. Each tile shares common data
+(like terrain type, roads, and landmarks) while maintaining unique coordinates for each tile.
+This allows Google Maps to display a vast number of tiles without consuming excessive memory.
