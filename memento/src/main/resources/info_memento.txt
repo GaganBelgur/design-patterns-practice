@@ -74,3 +74,25 @@ Issues with the above code:
 - The ResumeSnapShot class is tightly coupled with the ResumeEditor class, which violates the Single Responsibility Principle.
 - The ResumeSnapShot class should only be responsible for capturing and restoring the state of the ResumeEditor.
 - Violating encapsulation: The ResumeSnapShot class has access to the private properties of the ResumeEditor class, which violates encapsulation.
+
+How Memento Pattern solves the issues:
+- ResumeHistory class is introduced to manage the snapshots of the ResumeEditor, which separates the concerns of
+  saving and restoring the state from the ResumeEditor class.
+
+- The ResumeSnapShot class is modified to only capture the state of the ResumeEditor and provide a method to restore it,
+  without having access to the private properties of the ResumeEditor class.
+
+Pros and Cons of Memento Pattern:
+Pros:
+- Encapsulates the state of an object, allowing it to be saved and restored without violating encapsulation.
+- Provides a way to implement undo/redo functionality in an application.
+- Separates the concerns of saving and restoring an object's state from the object's own behavior, leading to cleaner and more maintainable code.
+Cons:
+- Can lead to increased memory usage if many snapshots are created and stored.
+- Can be complex to implement, especially if the state of the object is large or complex.
+
+Real-world examples of Memento Pattern:
+- Text editors: The Memento Pattern can be used to implement undo/redo functionality in a text editor,
+  allowing users to revert to previous versions of their documents.
+
+
