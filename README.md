@@ -1,6 +1,6 @@
-# Design Patterns 🚀
+# Design Patterns in Kotlin 🚀
 
-This repository contains my implementations of common **Design Patterns** in Java and Kotlin.  
+This repository contains my implementations of common **Design Patterns** in Kotlin.
 It serves as both a **learning reference** and a **ready-to-use guide** for interviews and projects.
 
 ---
@@ -45,7 +45,7 @@ It serves as both a **learning reference** and a **ready-to-use guide** for inte
 ---
 
 ## 🛠️ Tech Stack
-- Language: **Java 18 Kotlin 1.9.0**
+- Language: **Kotlin 1.9.0**
 - Build Tool: **Gradle/Gradle KTS**
 
 ---
