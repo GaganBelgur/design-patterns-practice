@@ -35,7 +35,7 @@ It serves as both a **learning reference** and a **ready-to-use guide** for inte
 - [x] Command
 - [x] Iterator
 - [x] Mediator
-- [ ] Memento
+- [x] Memento
 - [x] Observer
 - [x] State
 - [x] Strategy
@@ -53,7 +53,7 @@ It serves as both a **learning reference** and a **ready-to-use guide** for inte
 ## 📖 How to Run
 ```bash
 # Clone the repo
-git clone https://github.com/<your-username>/design-patterns.git
+git clone https://github.com/GaganBelgur/design-patterns-practice.git
 
 # Open in IntelliJ/VSCode/Eclipse
 # Run individual pattern examples
