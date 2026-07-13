@@ -1,0 +1,76 @@
+Memento Pattern
+
+What is Memento Pattern?
+The Memento Pattern is a behavioral design pattern that allows you to capture and externalize an object's
+internal state without violating encapsulation, so that the object can be restored to that state later.
+
+it is useful when you want to implement undo/redo functionality, or when you want to save the state of an object for later use.
+
+Simple terms:
+The Memento Pattern allows you to create a snapshot of an object's state at a particular point in time, and then restore
+that state later if needed. It separates the concerns of saving and restoring an object's state from the object's
+own behavior, allowing you to encapsulate the state in a separate object.
+
+When to Use It?
+- When you want to implement undo/redo functionality in your application.
+- When you want to save the state of an object for later use, such as in a game or a text editor.
+- When you want to separate the concerns of saving and restoring an object's state from the object's own behavior.
+
+Why to Use It?
+The Memento Pattern is useful when you want to implement undo/redo functionality,
+or when you want to save the state of an object for later use.
+
+It allows you to encapsulate the state in a separate object, which can be stored and restored without violating encapsulation.
+This makes it easier to manage the state of an object and provides a cleaner, more maintainable codebase.
+
+How to Use It?
+To use the Memento Pattern, you need to define three main components: the Originator, the Memento, and the Caretaker.
+The Originator is the object whose state you want to save and restore.
+The Memento is the object that encapsulates the state of the Originator, and
+The Caretaker is responsible for managing the Memento objects.
+
+``` kotlin
+// Bad Design:
+data class ResumeEditor(
+    private var name: String,
+    private var age: Int,
+    private var experience: String,
+    private var skills: MutableList<String>
+)
+
+class ResumeSnapShot(private val resumeEditor: ResumeEditor) {
+    private val name: String = resumeEditor.name
+    private val age: Int = resumeEditor.age
+    private val experience: String = resumeEditor.experience
+    private val skills: MutableList<String> = resumeEditor.skills.toMutableList()
+
+
+    fun restore(resumeEditor: ResumeEditor): Unit {
+        resumeEditor.name = this.name
+        resumeEditor.age = this.age
+        resumeEditor.experience = this.experience
+        resumeEditor.skills = this.skills.toMutableList()
+    }
+}
+
+class Client {
+    fun main() {
+        val resumeEditor = ResumeEditor("GB", 32, "10 years", mutableListOf("Java", "Kotlin"))
+        val snapshot = ResumeSnapShot(resumeEditor)
+
+        // Make changes to the resume
+        resumeEditor.name = "BG"
+        resumeEditor.age = 36
+        resumeEditor.experience = "13 years"
+        resumeEditor.skills.add("Python")
+
+        // Restore the original state
+        snapshot.restore(resumeEditor)
+    }
+}
+```
+
+Issues with the above code:
+- The ResumeSnapShot class is tightly coupled with the ResumeEditor class, which violates the Single Responsibility Principle.
+- The ResumeSnapShot class should only be responsible for capturing and restoring the state of the ResumeEditor.
+- Violating encapsulation: The ResumeSnapShot class has access to the private properties of the ResumeEditor class, which violates encapsulation.
