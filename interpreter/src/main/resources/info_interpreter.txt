@@ -1,2 +1,106 @@
 Interpreter Pattern
 
+What is Interpreter Pattern?
+The Interpreter Pattern defines a representation for a language's grammar along with an interpreter that
+uses that representation to evaluate sentences in the language.
+
+It is a behavioral design pattern used to evaluate expressions or statements in a simple language by
+modelling each grammar rule as an object that shares a common Expression interface.
+
+Simple terms:
+Each grammar rule becomes a class. Complex statements are built by composing these objects into a tree.
+Evaluation is performed by calling interpret(context) on the root node.
+
+When to Use It?
+- When the problem requires evaluating sentences of a simple, well-defined language (expressions, filters, rules).
+- When a language or rule-set is small and changes frequently, and a full parser/ compiler would be overkill.
+- When it is convenient to represent statements as an object structure that can be traversed and evaluated.
+
+Why Use It?
+- Encapsulates grammar rules in separate classes, making rules easier to add and test.
+- Keeps parsing/evaluation logic modular and maintainable.
+
+How to Use It?
+- Define an Expression interface with an interpret(context) method.
+- Implement TerminalExpression for literals/variables and NonTerminalExpression for operators or composites.
+- Provide a Context that stores variable bindings or runtime state used during interpretation.
+- Implement a Parser or Builder that converts input into an Expression tree the interpreter can evaluate.
+
+``` kotlin
+Bad Design:
+
+// ad-hoc evaluator mixing parsing and execution
+fun evaluate(expression: String, vars: Map<String, Int>): Int {
+    // inline parsing + computation using string splits and conditionals — hard to extend
+    return 0
+}
+```
+
+Issues with the code
+1. Parsing and evaluation are tangled, making it hard to extend with new operators or constructs.
+2. Hard to unit-test isolated grammar rules.
+
+How Interpreter Pattern solves the issues
+1. Moves grammar and evaluation into Expression classes; adding rules means adding new classes, not changing core logic.
+2. Parsing produces a reusable tree; evaluation becomes a simple traversal calling interpret.
+
+Core components
+- Expression interface: fun interpret(context: Context): T
+- TerminalExpression: numbers, literals, variables.
+- NonTerminalExpression: operations/composites like Add, Multiply, And, Or.
+- Context: holds variable bindings or evaluation state.
+- Parser/Builder: converts input strings into an Expression tree.
+
+Example:
+``` kotlin
+interface Expression { fun interpret(context: MutableMap<String, Int>): Int }
+
+class NumberExpression(private val number: Int) : Expression {
+    override fun interpret(context: MutableMap<String, Int>) = number
+}
+
+class VariableExpression(private val name: String) : Expression {
+    override fun interpret(context: MutableMap<String, Int>) = context[name] ?: 0
+}
+
+class AddExpression(private val left: Expression, private val right: Expression) : Expression {
+    override fun interpret(context: MutableMap<String, Int>) =
+        left.interpret(context) + right.interpret(context)
+}
+
+// A very small parser for expressions like "x + 3" (illustrative only)
+object SimpleParser {
+    fun parse(input: String): Expression {
+        val tokens = input.split(" ")
+        return if (tokens.size == 1) {
+            tokens[0].toIntOrNull()?.let { NumberExpression(it) } ?: VariableExpression(tokens[0])
+        } else {
+            val left = VariableExpression(tokens[0])
+            val right = NumberExpression(tokens[2].toInt())
+            AddExpression(left, right)
+        }
+    }
+}
+```
+
+Pros and Cons of Interpreter Pattern
+Pros:
+- Easy to add new grammar rules by introducing new Expression classes.
+- Clear separation between grammar representation and evaluation logic.
+
+Cons:
+- Can become verbose and hard to manage for complex or ambiguous grammars.
+- May have worse performance than compiled solutions for heavy-duty languages.
+
+Real-World Examples:
+- Simple expression evaluators in spreadsheets or configuration languages.
+- Rule engines for business logic (discount rules, validation rules).
+- Small query or filter languages embedded in applications.
+
+When not to use:
+- For large or complex languages, prefer parser generators or a proper compiler pipeline.
+
+Summary:
+The Interpreter Pattern models a domain-specific language as an object tree of Expressions and evaluates it via interpret(context). Use it for small, evolving languages where ease of extension and clarity outweigh parser complexity.
+```
+
