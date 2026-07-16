@@ -34,6 +34,7 @@ It serves as both a **learning reference** and a **ready-to-use guide** for inte
 - [x] Chain of Responsibility
 - [x] Command
 - [x] Iterator
+- [x] Interpreter
 - [x] Mediator
 - [x] Memento
 - [x] Observer
